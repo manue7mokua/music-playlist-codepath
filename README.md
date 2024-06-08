@@ -56,7 +56,7 @@ Deployed Application (optional): [Music Playlist Explorer Deployed Site](ADD_LIN
 
 `TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video actually renders and is playable when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
 
-`https://www.loom.com/share/9a6e610f4f4e49ca99626d6b171af1f9?sid=d54ffa65-edc3-4a05-af14-35ef1fd2b460`
+`[Music Playlist Codepath](https://www.loom.com/share/9a6e610f4f4e49ca99626d6b171af1f9?sid=fce1138f-fbf7-4975-9362-bad405dcf1b5)`
 
 ### Reflection
 
