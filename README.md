@@ -4,9 +4,9 @@
 
 ## Unit 2 Assignment: Music Playlist Explorer
 
-Submitted by: **NAME**
+Submitted by: **Emmanuel Mokua**
 
-Estimated time spent: **#** hours spent in total
+Estimated time spent: **27** hours spent in total
 
 Deployed Application (optional): [Music Playlist Explorer Deployed Site](ADD_LINK_HERE)
 
@@ -56,7 +56,7 @@ Deployed Application (optional): [Music Playlist Explorer Deployed Site](ADD_LIN
 
 `TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video actually renders and is playable when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
 
-`[Music Playlist Codepath](https://www.loom.com/share/9a6e610f4f4e49ca99626d6b171af1f9?sid=fce1138f-fbf7-4975-9362-bad405dcf1b5)`
+`Music Playlist Codepath - Watch Video`
 
 ### Reflection
 
