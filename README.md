@@ -52,7 +52,7 @@ Deployed Application (optional): [Music Playlist Explorer Deployed Site](ADD_LIN
 
 ### Walkthrough Video
 
-`https://www.loom.com/share/9a6e610f4f4e49ca99626d6b171af1f9?sid=df40417a-3d3a-4052-8870-d955c7d5801d`
+[Watch Demo Video](`https://www.loom.com/share/9a6e610f4f4e49ca99626d6b171af1f9?sid=df40417a-3d3a-4052-8870-d955c7d5801d`)
 
 ### Reflection
 
