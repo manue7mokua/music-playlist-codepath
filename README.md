@@ -1,12 +1,10 @@
 # music-playlist-codepath
 
-📝 `NOTE` Use this template to initialize the contents of a README.md file for your application. As you work on your assignment over the course of the week, update the required or stretch features lists to indicate which features you have completed by changing `[ ]` to `[x]`. (🚫 Remove this paragraph before submitting your assignment.)
-
 ## Unit 2 Assignment: Music Playlist Explorer
 
-Submitted by: **NAME**
+Submitted by: **Emmanuel Mokua**
 
-Estimated time spent: **#** hours spent in total
+Estimated time spent: **27** hours spent in total
 
 Deployed Application (optional): [Music Playlist Explorer Deployed Site](ADD_LINK_HERE)
 
@@ -54,28 +52,31 @@ Deployed Application (optional): [Music Playlist Explorer Deployed Site](ADD_LIN
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video actually renders and is playable when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
-
-`ADD_EMBEDDED_CODE_HERE`
+[Watch Demo Video](https://www.loom.com/share/9a6e610f4f4e49ca99626d6b171af1f9?sid=df40417a-3d3a-4052-8870-d955c7d5801d)
 
 ### Reflection
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
 Add your response here
+- Yes. The topics on CSS flexbox were super helpful. I was able to get pretty good at working with CSS styling after not being a fan of the trial and error initially. I had challenges completing the stretch features in the project but I think it has more to deal with how i set time for completing tasks and how I approach problem solving. I think over the next few weeks that will be something that I will try working on.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
 Add your response here
+- If I had more time, I would probably have completed all the stretch features. I would also have wanted to build out a full application with a dashboard, maybe also incorporate and API to populate the playlist data. I will definitely continue working on the project and improving it over the course of the next few weeks in my free time.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
 Add your response here
+- I really like the front-page UI I was able make. I would've liked to implement all the stretch features but I just didn't have enough time. However, after talking to my peers, I realized that they took a different problem solving approach in implementing their features.
+- So I think the lesson I took is that next time it would be more efficient to write down and plan out everything that I would like to implement in the beginning and how I would go about it. That would definitely help me work faster.
 
 ### Open-source libraries used
 
 - Add any links to open-source libraries used in your project.
 
 ### Shout out
+- A massive shoutout to my instructor @ Michelle Huynh. None of this would have been possible without her tremendous help and insight. She also taught me a lot about debugging JavaScript. She is awesome!! Cannot possibly thank her enough.
 
 Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
