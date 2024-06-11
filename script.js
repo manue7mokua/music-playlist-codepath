@@ -9,47 +9,33 @@ let playlistCardsContainer = document.getElementsByClassName("playlist-cards")[0
 let playlistSongsContainer = document.getElementsByClassName("playlist-songs")[0];
 let modalContentContainer = document.getElementsByClassName("modal-content");
 let modalDisplayContainer = document.getElementsByClassName("modal-display")[0];
-console.log(playlistCardsContainer);
 
-// Opening the modal on click
-const openModal = (foundPlaylist) => {
-    //console.log(clicked);
-    //const = clickedCard(playlistCardsContainer)
-    const closeButton = document.getElementById('close');
-    // closeButton.textContent = 'X';
-    closeButton.addEventListener('click', () => {
-        modal.style.display = "none";
-    });
-
-    // const shuffleButton = document.getElementById('shuffle');
-    // shuffleButton.addEventListener('click', () => {
-    //     console.log("shuffle button clicked");
-    // });
-
-    console.log(foundPlaylist);
-    populateModal(foundPlaylist);
-    modal.style.display = "flex";
-};
-
+populatePage(playlists);
 // PLAN
 // create function to make html elements - done
 // write the code to add event listener to the playlist cards
 document.querySelectorAll(".playlist-card").forEach((playlistCard) => {
     playlistCard.addEventListener('click', (event) => {
         console.log("playlist card clicked");
-        // if (playlistCard.event.target.id.includes("playlist-card")) {
-        //     pl
-        //     console.log(foundPlaylist);
-        //     return foundPlaylist;
-        // };
-        // event.target.id playlist-card-0
-        // extract 0 out of playlist-card-0
+
         event.target.id.split('-') // [playlist, card, 0]
-        let foundPlaylistID = event.target.id.split('-')[2]
+        let foundPlaylistID = event.currentTarget.id.split('-')[2]
         // find the playlist object that matches the id
-        foundPlaylist = data.playlists.find(playlist => playlist.playlistID == foundPlaylistID)
+        let foundPlaylist = data.playlists.find(playlist => playlist.playlistID == foundPlaylistID)
         console.log(foundPlaylist);
-        openModal(foundPlaylist);
+        let playlistSongs = foundPlaylist.songs;
+        console.log(playlistSongs);
+
+        addCloseButtonListener();
+        modalDisplayContainer.innerHTML = '';
+        playlistSongsContainer.innerHTML = '';
+
+        const playlistDisplayHeader = createPlaylistDisplayHeader(foundPlaylist);
+        modalDisplayContainer.appendChild(playlistDisplayHeader);
+        playlistSongs.forEach((song) => {
+            appendSongCardToPlaylistSongsContainer(song);
+        })
+        modal.style.display = "flex";
     });
 });
 
@@ -60,28 +46,6 @@ window.addEventListener('click', (event) => {
         modal.style.display = "none";
     }
 });
-// in the callback of the event listener, look at event.target.id to match playlist-card
-// in the callback function:
-// - find playlist id
-// - with the id, grab the playlist object that we want
-// - pass the playlist object into populatemodal
-
-// Function to populate the modal with intro information
-function populateModal(clickedCard) {
-    console.log(clickedCard);
-    let clickedPlaylist = clickedCard.songs;
-    // Clear existing song list items
-    modalDisplayContainer.innerHTML = '';
-    // Create HTML elements for displaying playlist information
-    let createdPlaylistDisplay = document.createElement("div");
-    createdPlaylistDisplay.innerHTML = createModalHeader(clickedCard);
-
-    createdPlaylistDisplay.classList.add("playlist-display");
-    // console.log(createdPlaylistHtml);
-    modalDisplayContainer.appendChild(createdPlaylistDisplay);
-    populatePlaylist(clickedPlaylist);
-    //populatePlaylist(playlist);
-}
 
 // Populating the Page with Playlists
 function populatePage(playlists) {
@@ -94,39 +58,10 @@ function populatePage(playlists) {
 
         // Set a unique ID using idx and a prefix
         createdPlaylistHtml.id = `playlist-card-${idx}`;
-        // createdPlaylistHtml.onclick = () => {
-        //     // openModal(createdPlaylistHtml.id);
-        //     openModal(playlist);
-        // }
 
-        // console.log(createdPlaylistHtml);
         playlistCardsContainer.appendChild(createdPlaylistHtml);
     });
 };
-
-
-// Populating the Playlist with Songs
-function populatePlaylist(openedPlaylist) {
-    console.log(openedPlaylist);
-    playlistSongsContainer.innerHTML = '';
-    let playlistSongs = openedPlaylist;
-    // console.log(songs);
-    // console.log(playlistSongs);
-
-    if (!playlistSongsContainer) {
-        console.error('Playlist songs container element is invalid or undefined');
-        return;
-    }
-
-    playlistSongs.forEach((song) => {
-        let createdSongHtml = document.createElement("div");
-        createdSongHtml.innerHTML = createSongCardHtml(song);
-        createdSongHtml.classList.add("song-card");
-
-        // console.log(createdSongHtml);
-        playlistSongsContainer.appendChild(createdSongHtml);
-    });
-}
 
 function createPlaylistCardHtml(playlist) {
     return `
@@ -140,67 +75,6 @@ function createPlaylistCardHtml(playlist) {
             `;
 };
 
-// grab the parent of all the playlist cards
-// create an event listener for each playlist card
-
-function createSongCardHtml(song) {
-    return `
-            <img class="song-images" src=${song.cover_art} alt="Our Sixth Song">
-            <div class="song-info orange-text">
-                <p class="song-title orange-text">Title: ${song.title}</p>
-                <p class="song-artist orange-text">Created By: ${song.artist}</p>
-                <p class="song-album orange-text">Album: ${song.album}</p>
-                <span><p class="song-duration orange-text">${song.duration}</p></span>
-            </div>
-            `;
-}
-
-function createModalHeader(foundPlaylist) {
-    // Add a close button to the modal
-    console.log(foundPlaylist);
-    // const closeButton = document.createElement('button');
-    // const closeButton = document.getElementById('close');
-    // // closeButton.textContent = 'X';
-    // closeButton.addEventListener('click', () => {
-    //     modal.style.display = "none";
-    // });
-
-    return `
-            <img class="modal-playlist-image" id="${foundPlaylist.playlistID}" src=${foundPlaylist.playlist_art} alt="Our Sixth Song">
-            <div class="modal-playlist-info orange-text" my-data="${foundPlaylist.playlistID}">
-                <p class="modal-playlist-title orange-text" my-data="${foundPlaylist.playlistID}">Album: ${foundPlaylist.playlist_name}</p>
-                <p class="modal-playlist-artist orange-text" my-data="${foundPlaylist.playlistID}">Created By: ${foundPlaylist.playlist_creator}</p>
-                <p class="like-count orange-text">Like Count: ${foundPlaylist.likeCount}</p>
-            </div>
-            `;
-}
-
-
-// Function calls
-populatePage(playlists);
-
-document.querySelectorAll(".playlist-card").forEach((playlistCard) => {
-    console.log(playlistCard);
-    playlistCard.addEventListener('click', (event) => {
-        console.log("playlist card clicked");
-        // if (playlistCard.event.target.id.includes("playlist-card")) {
-        //     pl
-        //     console.log(foundPlaylist);
-        //     return foundPlaylist;
-        // };
-        // event.target.id playlist-card-0
-        // extract 0 out of playlist-card-0
-        // event.target.id.split('-') // [playlist, card, 0]
-        // let foundPlaylistID = event.target.id.split('-')[2]
-        console.log(event.target)
-        let foundPlaylistID = event.target.getAttribute("my-data") // id of the playlist
-        console.log("foundplaylistid", foundPlaylistID);
-        // // find the playlist object that matches the id
-        let foundPlaylist = data.playlists.find(playlist => playlist.playlistID == foundPlaylistID)
-        // console.log(foundPlaylist);
-        openModal(foundPlaylist);
-    });
-});
 // Like Btn
 // grab all the cards and put them in a variable
 // const likeBtns = document.querySelectorAll(".like-button");
@@ -246,8 +120,47 @@ shuffleButton.addEventListener("click", () => {
     const selectedPlaylist = data.playlists[playlistCard].songs;
     console.log(selectedPlaylist);
 
-    // Shuffle the songs array inside the selected playlist object
-    populatePlaylist( shufflePlaylist(selectedPlaylist));
-
-    // Update the list of songs displayed in the modal to reflect the new order
+    let shuffledPlaylistSongs = shufflePlaylist(selectedPlaylist);
+    playlistSongsContainer.innerHTML = '';
+    shuffledPlaylistSongs.forEach((song) => {
+        appendSongCardToPlaylistSongsContainer(song);
+    });
 });
+
+const addCloseButtonListener = () => {
+    const closeButton = document.getElementById('close');
+    closeButton.addEventListener('click', () => {
+        modal.style.display = "none";
+    });
+}
+
+const createPlaylistDisplayHeader = (foundPlaylist) => {
+    let createdPlaylistDisplay = document.createElement("div");
+    createdPlaylistDisplay.classList.add("playlist-display");
+    let playlistHeaderHtml = `
+    <img class="modal-playlist-image" id="${foundPlaylist.playlistID}" src=${foundPlaylist.playlist_art} alt="Our Sixth Song">
+    <div class="modal-playlist-info orange-text" my-data="${foundPlaylist.playlistID}">
+        <p class="modal-playlist-title orange-text" my-data="${foundPlaylist.playlistID}">Album: ${foundPlaylist.playlist_name}</p>
+        <p class="modal-playlist-artist orange-text" my-data="${foundPlaylist.playlistID}">Created By: ${foundPlaylist.playlist_creator}</p>
+        <p class="like-count orange-text">Like Count: ${foundPlaylist.likeCount}</p>
+    </div>
+    `;
+    createdPlaylistDisplay.innerHTML = playlistHeaderHtml;
+    return createdPlaylistDisplay;
+}
+
+const appendSongCardToPlaylistSongsContainer = (song) => {
+    let createdSongCardDisplay = document.createElement("div");
+    createdSongCardDisplay.classList.add("song-card");
+    let createdSongCardHtml = `
+            <img class="song-images" src=${song.cover_art} alt="Our Sixth Song">
+            <div class="song-info orange-text">
+                <p class="song-title orange-text">Title: ${song.title}</p>
+                <p class="song-artist orange-text">Created By: ${song.artist}</p>
+                <p class="song-album orange-text">Album: ${song.album}</p>
+                <span><p class="song-duration orange-text">${song.duration}</p></span>
+            </div>
+            `;
+    createdSongCardDisplay.innerHTML = createdSongCardHtml;
+    playlistSongsContainer.appendChild(createdSongCardDisplay);
+}
